@@ -6,4 +6,3 @@ https://drive.google.com/file/d/1AC5TvuzlWjbpXpbkcgClmoDRItoNylyF/view?usp=shari
 ### Video Link For Task 3: 
 
 ### FiM made Task 2: Make Bullet + Bullet damages enemy
-### Video Link For Task 2: Shown in River’s Video
