@@ -1,0 +1,76 @@
+River's Code for Task 1
+
+TASK 1 CODE IN PLAYERMOVEMENT (FULL)
+
+using UnityEngine;
+using UnityEngine.InputSystem;
+
+public class PlayerMovement : MonoBehaviour
+{
+    public float moveSpeed;
+    private float speedX = 0f;
+    private float speedY = 0f;
+    public Rigidbody2D rb;
+
+    public SpriteRenderer spriteRenderer;
+
+    public Sprite flutterdown;
+    public Sprite flutterleft;
+    public Sprite flutterright;
+    public Sprite flutterup;
+
+    public GameObject Weapon;
+
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        Movement();
+    }
+
+    void Movement()
+    {
+
+        // Horizontal Movement
+        if (Keyboard.current.aKey.isPressed)
+        {
+            speedX = -moveSpeed;
+            spriteRenderer.sprite = flutterleft;
+            Weapon.transform.localScale = new Vector3(-1f, 1f, 1f);
+        }
+        else if (Keyboard.current.dKey.isPressed)
+        {
+            speedX = moveSpeed;
+            spriteRenderer.sprite = flutterright;
+            Weapon.transform.localScale = new Vector3(1f, 1f, 1f);
+
+        }
+        else
+        {
+            speedX = 0;
+        }
+
+        // Vertical Movement
+        if (Keyboard.current.wKey.isPressed)
+        {
+            speedY = moveSpeed;
+            spriteRenderer.sprite = flutterup;
+        }
+        else if (Keyboard.current.sKey.isPressed)
+        {
+            speedY = -moveSpeed;
+            spriteRenderer.sprite = flutterdown;
+        }
+        else
+        {
+            speedY = 0;
+        }
+
+        rb.linearVelocity = new Vector2(speedX, speedY);
+    }
+}
