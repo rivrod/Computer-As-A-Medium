@@ -1,0 +1,66 @@
+//Bullet Script
+using UnityEngine;
+
+public class Bullet : MonoBehaviour
+{
+    public float speed = 10f;
+    public float destroyTime = 3f;
+
+    public Rigidbody2D rb;
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
+        rb.linearVelocity = transform.up * speed;
+        Destroy(gameObject, destroyTime);
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+}
+
+//PlayerAttack Script
+
+using UnityEngine;
+using UnityEngine.InputSystem;
+
+public class PlayerAttack : MonoBehaviour
+{
+    public Animator animator;
+
+    public GameObject bulletPrefab;
+    public Transform firePoint;
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        Shoot();
+    }
+
+    void Attack()
+    {
+        if (Keyboard.current.fKey.isPressed)
+        {
+            animator.SetBool("attack", true);
+        }
+        else
+        {
+            animator.SetBool("attack", false);
+        }
+    }
+
+    void Shoot()
+    {
+        if (Keyboard.current.fKey.wasPressedThisFrame)
+        {
+            Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        }
+    }
+}
